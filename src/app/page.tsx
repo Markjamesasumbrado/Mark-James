@@ -20,7 +20,8 @@ import {
   ArrowUp,
   X,
   ArrowRight,
-  Award
+  Award,
+  GraduationCap
 } from "lucide-react";
 import Image from "next/image";
 
@@ -96,8 +97,8 @@ export default function Home() {
               <Image
                 src="/image.png"
                 alt="Mark James B. Asumbrado"
-                width={350}
-                height={350}
+                width={420}
+                height={420}
                 className="profile-blob-img"
                 priority
               />
@@ -108,24 +109,74 @@ export default function Home() {
 
       {/* About Section */}
       <section id="about" className="about section">
-        <div className="container about-container-full">
-          <div className="about-content" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-            <div className="section-header center">
-              <h2 className="gradient-heading">About Me</h2>
-              <div className="line"></div>
-            </div>
+        <div className="container">
+          <div className="section-header center">
+            <h2 className="gradient-heading">About Me</h2>
+            <div className="line"></div>
+          </div>
+          
+          <div className="about-intro">
             <p>
               I’m a UI/UX designer and data analyst who enjoys turning ideas into simple, user-friendly experiences. I like blending creativity with data to create designs that not only look good but also work well for real people.
-
             </p>
-            <div className="skills">
-              <span className="skill-tag"><Brush size={18} /> Figma</span>
-              <span className="skill-tag"><Layout size={18} /> HTML/CSS</span>
-              <span className="skill-tag"><FileCode2 size={18} /> JavaScript</span>
-              <span className="skill-tag"><Atom size={18} /> React</span>
-              <span className="skill-tag"><Smartphone size={18} /> Responsive Design</span>
-              <span className="skill-tag"><Palette size={18} /> UI/UX</span>
+          </div>
+
+          <div className="about-grid">
+            <div className="about-column">
+              <h3 className="column-title"><Briefcase size={24} className="highlight" /> Work Experience</h3>
+              <div className="timeline">
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>Senior UI/UX Designer</h4>
+                    <span className="timeline-date">2023 - Present</span>
+                    <p>Leading design systems and user research for enterprise SaaS products. Improved user retention by 25% through UX revamps.</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>Data Analyst</h4>
+                    <span className="timeline-date">2021 - 2023</span>
+                    <p>Analyzed user behavior data to inform product design decisions. Created interactive dashboards using modern web tools.</p>
+                  </div>
+                </div>
+              </div>
             </div>
+
+            <div className="about-column">
+              <h3 className="column-title"><GraduationCap size={24} className="highlight" /> Education</h3>
+              <div className="timeline">
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>BS in Information Technology</h4>
+                    <span className="timeline-date">2017 - 2021</span>
+                    <p>University of Example. Graduated with Honors. Specialized in Human-Computer Interaction and Data Science.</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>UX Design Certification</h4>
+                    <span className="timeline-date">2022</span>
+                    <p>Google UX Design Professional Certificate. Completed 7-course program on design thinking and prototyping.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="skills-section">
+             <h3 className="column-title center"><Atom size={24} className="highlight" /> Core Skills</h3>
+             <div className="skills">
+               <span className="skill-tag"><Brush size={18} /> Figma</span>
+               <span className="skill-tag"><Layout size={18} /> HTML/CSS</span>
+               <span className="skill-tag"><FileCode2 size={18} /> JavaScript</span>
+               <span className="skill-tag"><Atom size={18} /> React</span>
+               <span className="skill-tag"><Smartphone size={18} /> Responsive Design</span>
+               <span className="skill-tag"><Palette size={18} /> UI/UX</span>
+             </div>
           </div>
         </div>
       </section>
