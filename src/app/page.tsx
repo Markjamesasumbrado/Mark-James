@@ -57,8 +57,8 @@ export default function Home() {
             <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
             <a href="#about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
             <a href="#projects" onClick={() => setIsMobileMenuOpen(false)}>Projects</a>
+            <a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Skills</a>
             <a href="#certifications" onClick={() => setIsMobileMenuOpen(false)}>Certifications</a>
-            <a href="#services" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
             <a href="#contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
           </div>
           <button
@@ -77,10 +77,10 @@ export default function Home() {
             <h1 className="gradient-heading">
               Hi, I&apos;m <span className="highlight">Mark James B. Asumbrado</span>
             </h1>
-            <h2 className="gradient-heading" style={{ display: 'block', marginTop: '0.5rem' }}>UI/UX Designer & Developer</h2>
+            <h2 className="gradient-heading" style={{ display: 'block', marginTop: '0.5rem' }}>IT Student & Aspiring Tech Professional</h2>
             <p>
-              I design clean, modern, and user-focused digital experiences
-              that make a difference.
+              Nangkatrail st. Buhangin Davao City <br />
+              09772492444 | markjames082403@gmail.com
             </p>
             <div className="hero-buttons">
               <a href="#projects" className="btn btn-primary">
@@ -117,7 +117,7 @@ export default function Home() {
           
           <div className="about-intro">
             <p>
-              I’m a UI/UX designer and data analyst who enjoys turning ideas into simple, user-friendly experiences. I like blending creativity with data to create designs that not only look good but also work well for real people.
+              My objective is to contribute positively to an organization while developing my professionalism and work discipline. I aim to learn from experienced mentors, growing both personally and professionally in a supportive environment, and to build my knowledge in a role where I can learn, improve, and contribute to the team&apos;s success.
             </p>
           </div>
 
@@ -128,17 +128,25 @@ export default function Home() {
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <h4>Senior UI/UX Designer</h4>
-                    <span className="timeline-date">2023 - Present</span>
-                    <p>Leading design systems and user research for enterprise SaaS products. Improved user retention by 25% through UX revamps.</p>
+                    <h4>SK Kagawad</h4>
+                    <span className="timeline-date">Barangay Buhangin Proper</span>
+                    <p>Assisted with youth programs and community activities.</p>
                   </div>
                 </div>
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <h4>Data Analyst</h4>
-                    <span className="timeline-date">2021 - 2023</span>
-                    <p>Analyzed user behavior data to inform product design decisions. Created interactive dashboards using modern web tools.</p>
+                    <h4>Virtual Assistant</h4>
+                    <span className="timeline-date">Remote Work</span>
+                    <p>Provided remote administrative support from home.</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>Carinderia Assistant</h4>
+                    <span className="timeline-date">Family Business</span>
+                    <p>Assisted every summer, handling customer service, dishwashing, and other all-around tasks.</p>
                   </div>
                 </div>
               </div>
@@ -151,16 +159,32 @@ export default function Home() {
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
                     <h4>BS in Information Technology</h4>
-                    <span className="timeline-date">2017 - 2021</span>
-                    <p>University of Example. Graduated with Honors. Specialized in Human-Computer Interaction and Data Science.</p>
+                    <span className="timeline-date">2022 - Present</span>
+                    <p>Holy Cross of Davao College</p>
                   </div>
                 </div>
                 <div className="timeline-item">
                   <div className="timeline-dot"></div>
                   <div className="timeline-content">
-                    <h4>UX Design Certification</h4>
-                    <span className="timeline-date">2022</span>
-                    <p>Google UX Design Professional Certificate. Completed 7-course program on design thinking and prototyping.</p>
+                    <h4>Senior High School</h4>
+                    <span className="timeline-date">2020 - 2022</span>
+                    <p>Lamb of God SPED Academy</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>Junior High School</h4>
+                    <span className="timeline-date">2016 - 2020</span>
+                    <p>Lamb of God SPED Academy</p>
+                  </div>
+                </div>
+                <div className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="timeline-content">
+                    <h4>Elementary</h4>
+                    <span className="timeline-date">2010 - 2016</span>
+                    <p>San Isidro Elementary School</p>
                   </div>
                 </div>
               </div>
@@ -170,12 +194,12 @@ export default function Home() {
           <div className="skills-section">
              <h3 className="column-title center"><Atom size={24} className="highlight" /> Core Skills</h3>
              <div className="skills">
-               <span className="skill-tag"><Brush size={18} /> Figma</span>
-               <span className="skill-tag"><Layout size={18} /> HTML/CSS</span>
-               <span className="skill-tag"><FileCode2 size={18} /> JavaScript</span>
-               <span className="skill-tag"><Atom size={18} /> React</span>
-               <span className="skill-tag"><Smartphone size={18} /> Responsive Design</span>
-               <span className="skill-tag"><Palette size={18} /> UI/UX</span>
+               <span className="skill-tag"><Terminal size={18} /> Basic Troubleshooting</span>
+               <span className="skill-tag"><FileCode2 size={18} /> MS Office Suite</span>
+               <span className="skill-tag"><Palette size={18} /> Document Editing</span>
+               <span className="skill-tag"><Layout size={18} /> Digital Management</span>
+               <span className="skill-tag"><Briefcase size={18} /> Teamwork</span>
+               <span className="skill-tag"><Send size={18} /> Clear Communication</span>
              </div>
           </div>
         </div>
@@ -195,22 +219,19 @@ export default function Home() {
               <div className="project-image">
                 <Image
                   src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&q=80&w=600&h=400"
-                  alt="Portfolio Website"
+                  alt="SKonnect Capstone"
                   width={600}
                   height={400}
                   className="img-fluid"
                 />
               </div>
               <div className="project-info">
-                <h3>Portfolio Website</h3>
+                <h3>SKonnect</h3>
                 <p>
-                  A modern, dark-mode portfolio built with vanilla web technologies
-                  focusing on performance and micro-interactions.
+                  Capstone: A Smart Youth Engagement Platform Using NLP for Barangay Leadership.
+                  <br /><br />
+                  <strong>Role:</strong> System Analyst / Documentation
                 </p>
-                <div className="project-actions">
-                  <a href="#" className="btn btn-sm btn-outline">Case Study</a>
-                  <a href="#" className="btn btn-sm btn-primary">Live Demo</a>
-                </div>
               </div>
             </div>
             {/* Project 2 */}
@@ -218,88 +239,59 @@ export default function Home() {
               <div className="project-image">
                 <Image
                   src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600&h=400"
-                  alt="E-commerce App"
+                  alt="Manlupig Marketing"
                   width={600}
                   height={400}
                   className="img-fluid"
                 />
               </div>
               <div className="project-info">
-                <h3>E-commerce App</h3>
+                <h3>Manlupig Marketing</h3>
                 <p>
-                  A complete mobile shopping experience with seamless checkout flows
-                  and dynamic product discovery.
+                  IM101 Project.
+                  <br /><br />
+                  <strong>Role:</strong> UI/UX / Documentation
                 </p>
-                <div className="project-actions">
-                  <a href="#" className="btn btn-sm btn-outline">Case Study</a>
-                  <a href="#" className="btn btn-sm btn-primary">Live Demo</a>
-                </div>
-              </div>
-            </div>
-            {/* Project 3 */}
-            <div className="project-card">
-              <div className="project-image">
-                <Image
-                  src="https://images.unsplash.com/photo-1618761714954-0b8cd0026356?auto=format&fit=crop&q=80&w=600&h=400"
-                  alt="Mobile UI Design"
-                  width={600}
-                  height={400}
-                  className="img-fluid"
-                />
-              </div>
-              <div className="project-info">
-                <h3>Fintech Mobile UI</h3>
-                <p>
-                  A futuristic and secure mobile banking interface focusing on data
-                  visualization and ease of use.
-                </p>
-                <div className="project-actions">
-                  <a href="#" className="btn btn-sm btn-outline">Case Study</a>
-                  <a href="#" className="btn btn-sm btn-primary">Live Demo</a>
-                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Professional Skills Section */}
       <section id="services" className="services section">
         <div className="container">
           <div className="section-header center">
-            <h2 className="gradient-heading">My Services</h2>
-            <p>What I can do for you.</p>
+            <h2 className="gradient-heading">Professional Skills</h2>
+            <p>What I bring to the table.</p>
             <div className="line"></div>
           </div>
           <div className="services-grid">
             <div className="service-card">
               <div className="service-icon">
-                <PenTool size={32} />
+                <Briefcase size={32} />
+              </div>
+              <h3>Teamwork</h3>
+              <p>
+                I work well with different people, take accountability for my actions, and communicate clearly while respecting others&apos; ideas.
+              </p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">
+                <Terminal size={32} />
+              </div>
+              <h3>Computer Operations</h3>
+              <p>
+                Proficient in Microsoft Office (Word, Excel, PowerPoint), basic troubleshooting, and managing digital documents.
+              </p>
+            </div>
+            <div className="service-card">
+              <div className="service-icon">
+                <Palette size={32} />
               </div>
               <h3>UI/UX Design</h3>
               <p>
-                Creating beautiful, user-centered interfaces that solve real problems
-                and elevate your brand identity.
-              </p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <Code size={32} />
-              </div>
-              <h3>Web Development</h3>
-              <p>
-                Building fast, responsive, and accessible websites using modern
-                technologies and best practices.
-              </p>
-            </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <Hexagon size={32} />
-              </div>
-              <h3>Branding</h3>
-              <p>
-                Developing cohesive visual systems, logos, and style guides to make
-                your product memorable.
+                Creating intuitive, user-centered interfaces with a focus on modern aesthetics and seamless user experiences.
               </p>
             </div>
           </div>
@@ -310,28 +302,40 @@ export default function Home() {
       <section id="certifications" className="certifications section bg-alt">
         <div className="container">
           <div className="section-header center">
-            <h2 className="gradient-heading">My Certifications</h2>
-            <p>Professional achievements and qualifications.</p>
+            <h2 className="gradient-heading">Certifications</h2>
+            <p>Professional courses and certificates.</p>
             <div className="line"></div>
           </div>
-          <div className="services-grid">
-            <div className="service-card">
-              <div className="service-icon">
-                <Award size={32} />
+          <div className="projects-grid">
+            <div className="project-card">
+              <div className="project-image" style={{ height: '300px', overflow: 'hidden' }}>
+                <iframe
+                  src="/im102certificate.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 'none', backgroundColor: '#fff' }}
+                  title="Web Development Bootcamp Certificate"
+                />
               </div>
-              <h3></h3>
-              <p>
-                Advanced data analysis, visualization, and statistical modeling.
-              </p>
+              <div className="project-info">
+                <h3>Web Development Bootcamp</h3>
+                <p>Udemy (HTML, CSS, PHP, MySQL, WordPress) - Dec 2024</p>
+              </div>
             </div>
-            <div className="service-card">
-              <div className="service-icon">
-                <Award size={32} />
+            <div className="project-card">
+              <div className="project-image" style={{ height: '300px', overflow: 'hidden' }}>
+                <iframe
+                  src="/JimCert.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 'none', backgroundColor: '#fff' }}
+                  title="Introduction to Front End Development Certificate"
+                />
               </div>
-              <h3>UI/UX Design Professional</h3>
-              <p>
-                Comprehensive certification in user experience and interface design.
-              </p>
+              <div className="project-info">
+                <h3>Introduction to Front End Development</h3>
+                <p>Simplilearn SkillUP - Apr 2026</p>
+              </div>
             </div>
           </div>
         </div>
@@ -376,18 +380,12 @@ export default function Home() {
                 </div>
                 <div>
                   <h4>Email Me</h4>
-                  <a href="mailto:your@email.com">your@email.com</a>
+                  <a href="mailto:markjames082403@gmail.com">markjames082403@gmail.com</a>
                 </div>
               </div>
               <div className="social-links">
-                <a href="#" className="social-icon" aria-label="LinkedIn">
-                  <Briefcase size={20} />
-                </a>
-                <a href="#" className="social-icon" aria-label="GitHub">
+                <a href="https://github.com/Markjamesasumbrado" className="social-icon" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                   <Terminal size={20} />
-                </a>
-                <a href="#" className="social-icon" aria-label="Dribbble">
-                  <Globe size={20} />
                 </a>
               </div>
             </div>
