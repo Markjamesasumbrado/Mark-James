@@ -105,7 +105,7 @@ export default function Home() {
       <section id="home" className="hero">
         <div className="container hero-container">
           <div className="hero-content">
-            <h1 className="gradient-heading" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', alignItems: 'center' }}>
+            <h1 className="gradient-heading hero-title">
               <TextType
                 as="span"
                 text="Hi, I'm"
@@ -125,8 +125,8 @@ export default function Home() {
             </h1>
             <TextType
               as="h2"
-              className="gradient-heading"
-              style={{ display: 'block', marginTop: '0.5rem', minHeight: '3rem' }}
+              className="gradient-heading hero-subtitle-type"
+              style={{ display: 'block', marginTop: '0.5rem' }}
               text={["IT Student", "Aspiring Tech Professional", "Creative Problem Solver", "UI/UX Enthusiast"]}
               typingSpeed={70}
               pauseDuration={2000}

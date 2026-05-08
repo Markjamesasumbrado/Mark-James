@@ -32,6 +32,18 @@
   border-radius: 20px;
 }
 
+@media (max-width: 768px) {
+  .certifications-marquee-track .project-card {
+    width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications-marquee-track .project-card {
+    width: 280px;
+  }
+}
+
 .certifications-marquee-track .project-card:hover {
   transform: translateY(-10px) scale(1.02);
   border-color: rgba(37, 99, 235, 0.4);

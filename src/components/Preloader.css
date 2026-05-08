@@ -168,6 +168,29 @@
   text-align: center;
 }
 
+@media (max-width: 768px) {
+  .preloader-subtitle {
+    letter-spacing: 0.2rem;
+    font-size: 0.7rem;
+  }
+  
+  .hud-corner {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .top-left, .top-right { top: 20px; }
+  .bottom-left, .bottom-right { bottom: 20px; }
+  .top-left, .bottom-left { left: 20px; }
+  .top-right, .bottom-right { right: 20px; }
+  
+  .hud-status {
+    bottom: 20px;
+    right: 50px;
+    font-size: 8px;
+  }
+}
+
 .preloader-line-container {
   width: 100%;
   height: 2px;
