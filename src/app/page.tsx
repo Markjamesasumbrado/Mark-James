@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Menu,
   Brush,
@@ -36,6 +36,68 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const animationRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    const track = scrollRef.current;
+    if (!track) return;
+
+    const scrollStep = 1; // Speed of auto-scroll
+    
+    const animateScroll = () => {
+      if (!isDragging && !isHovered) {
+        // Since we duplicated the items, the total width is roughly twice the original content
+        // When we scroll halfway, we jump back to 0.
+        if (track.scrollLeft >= track.scrollWidth / 2) {
+           // Snap back exactly half the scrollWidth
+           track.scrollLeft -= track.scrollWidth / 2;
+        } else {
+           track.scrollLeft += scrollStep;
+        }
+      }
+      animationRef.current = requestAnimationFrame(animateScroll);
+    };
+
+    animationRef.current = requestAnimationFrame(animateScroll);
+
+    return () => {
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+    };
+  }, [isDragging, isHovered]);
+
+  const onMouseDown = (e: React.MouseEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const onMouseLeave = () => {
+    setIsDragging(false);
+    setIsHovered(false);
+  };
+
+  const onMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll-fast
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const onMouseEnter = () => {
+    setIsHovered(true);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -146,12 +208,14 @@ export default function Home() {
             <div className="profile-glow"></div>
             <div className="profile-blob-container">
               <Image
-                src="/profile.png"
+                src="/jimmy.jpg"
                 alt="Mark James B. Asumbrado"
                 width={420}
                 height={420}
                 className="profile-blob-img"
                 priority
+                quality={100}
+                unoptimized={true}
               />
             </div>
           </div>
@@ -307,7 +371,17 @@ export default function Home() {
             <div className="line"></div>
           </div>
           <div className="certifications-marquee-container">
-            <div className="certifications-marquee-track">
+            <div 
+              className={`certifications-marquee-track ${isDragging ? 'dragging' : ''}`}
+              ref={scrollRef}
+              onMouseDown={onMouseDown}
+              onMouseLeave={onMouseLeave}
+              onMouseUp={onMouseUp}
+              onMouseMove={onMouseMove}
+              onMouseEnter={onMouseEnter}
+              onTouchStart={() => setIsHovered(true)}
+              onTouchEnd={() => setIsHovered(false)}
+            >
               {/* First Set */}
               <div className="project-card certification-card">
                 <div className="project-image" style={{ height: '280px', overflow: 'hidden', background: '#f8fafc', padding: '10px' }}>

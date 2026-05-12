@@ -105,10 +105,12 @@ html {
     transform: scale(1);
     box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
   }
+
   50% {
     transform: scale(1.02);
     box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.4);
   }
+
   100% {
     transform: scale(1);
     box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2);
@@ -453,6 +455,7 @@ img {
   .hero h1 {
     font-size: 2.8rem;
   }
+
   .hero h2 {
     font-size: 1.5rem;
   }
@@ -462,6 +465,7 @@ img {
   .hero h1 {
     font-size: 2.2rem;
   }
+
   .hero h2 {
     font-size: 1.25rem;
   }
@@ -507,6 +511,8 @@ img {
   animation-delay: -5s;
 }
 
+
+
 .profile-blob-container {
   position: relative;
   width: 400px;
@@ -543,6 +549,8 @@ img {
   object-position: top center;
   border-radius: 50%;
   transition: all 0.4s ease;
+  filter: contrast(1.15) brightness(1.05) saturate(1.2);
+  image-rendering: high-quality;
 }
 
 .profile-blob-container:hover {
@@ -871,7 +879,7 @@ img {
   position: relative;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: 1px solid rgba(37, 99, 235, 0.2);
-  box-shadow: 
+  box-shadow:
     0 10px 20px rgba(0, 0, 0, 0.3),
     inset 0 2px 5px rgba(255, 255, 255, 0.1),
     0 0 15px rgba(37, 99, 235, 0.1);
@@ -881,7 +889,7 @@ img {
 .service-card:hover .service-icon {
   transform: translateZ(30px) rotateY(10deg);
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(30, 64, 175, 0.1));
-  box-shadow: 
+  box-shadow:
     0 15px 30px rgba(0, 0, 0, 0.4),
     inset 0 2px 8px rgba(255, 255, 255, 0.2),
     0 0 25px rgba(37, 99, 235, 0.3);
@@ -1021,7 +1029,7 @@ img {
   flex-shrink: 0;
   position: relative;
   border: 1px solid rgba(37, 99, 235, 0.2);
-  box-shadow: 
+  box-shadow:
     0 8px 16px rgba(0, 0, 0, 0.3),
     inset 0 1px 3px rgba(255, 255, 255, 0.1);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -1030,7 +1038,7 @@ img {
 .contact-item:hover .contact-icon {
   transform: translateY(-5px) scale(1.1);
   background: linear-gradient(135deg, rgba(37, 99, 235, 0.3), rgba(30, 64, 175, 0.1));
-  box-shadow: 
+  box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.4),
     inset 0 1px 5px rgba(255, 255, 255, 0.2),
     0 0 15px rgba(37, 99, 235, 0.3);
@@ -1091,7 +1099,7 @@ img {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
   transform: rotate(45deg);
   transition: 0.6s;
   opacity: 0;
@@ -1239,19 +1247,36 @@ img {
 }
 
 /* Staggered delays */
-.section.revealed .project-card:nth-child(1) { animation-delay: 0.1s; }
-.section.revealed .project-card:nth-child(2) { animation-delay: 0.3s; }
-.section.revealed .project-card:nth-child(3) { animation-delay: 0.5s; }
+.section.revealed .project-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
 
-.section.revealed .service-card:nth-child(1) { animation-delay: 0.2s; }
-.section.revealed .service-card:nth-child(2) { animation-delay: 0.4s; }
-.section.revealed .service-card:nth-child(3) { animation-delay: 0.6s; }
+.section.revealed .project-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.section.revealed .project-card:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.section.revealed .service-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.section.revealed .service-card:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.section.revealed .service-card:nth-child(3) {
+  animation-delay: 0.6s;
+}
 
 @keyframes revealStagger {
   from {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
