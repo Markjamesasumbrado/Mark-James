@@ -925,11 +925,9 @@ img {
 
 /* Contact Section */
 .contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  display: flex;
+  justify-content: center;
   margin-top: 3rem;
-  align-items: flex-start;
 }
 
 .contact-info {

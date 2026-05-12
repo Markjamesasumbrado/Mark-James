@@ -501,28 +501,7 @@ export default function Home() {
             <div className="line"></div>
           </div>
           <div className="contact-container">
-            <form className="contact-form" id="contactForm" onSubmit={(e) => e.preventDefault()}>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" required placeholder="John Doe" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" required placeholder="john@example.com" />
-              </div>
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea
-                  id="message"
-                  rows={5}
-                  required
-                  placeholder="Tell me about your project..."
-                ></textarea>
-              </div>
-              <button type="submit" className="btn btn-primary btn-block">
-                Send Message <Send size={20} />
-              </button>
-            </form>
+
 
             <div className="contact-info">
               <div className="contact-item">
