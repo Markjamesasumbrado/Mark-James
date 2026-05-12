@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter, Outfit, Orbitron } from "next/font/google";
 import "./globals.css";
 import "./marquee.css";
 import Waves from "../components/Waves";
@@ -15,6 +15,12 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
+});
+
 export const metadata: Metadata = {
   title: "Portfolio | Professional Design",
   description: "Portfolio of a UI/UX Designer & Developer",
@@ -28,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable}`}
+      className={`${inter.variable} ${outfit.variable} ${orbitron.variable}`}
     >
       <body>
         <div className="waves-background-wrapper" style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -10 }}>

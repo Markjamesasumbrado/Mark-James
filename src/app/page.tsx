@@ -29,6 +29,9 @@ import {
   Eye
 } from "lucide-react";
 import Image from "next/image";
+import emailjs from "@emailjs/browser";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TextType from "../components/TextType";
 import Preloader from "../components/Preloader";
 
@@ -43,6 +46,15 @@ export default function Home() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const animationRef = useRef<number | null>(null);
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
 
   useEffect(() => {
     const track = scrollRef.current;
@@ -100,44 +112,146 @@ export default function Home() {
   };
 
   useEffect(() => {
+    if (isLoading) return;
+
+    // Refresh ScrollTrigger when page loads
+    ScrollTrigger.refresh();
+
+    // GSAP ScrollTrigger animations
+    const sections = document.querySelectorAll(".section");
+    sections.forEach((section) => {
+      gsap.fromTo(section, 
+        { opacity: 0, y: 50, scale: 0.98 },
+        { 
+          opacity: 1, 
+          y: 0, 
+          scale: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: section,
+            start: "top 85%",
+            end: "top 50%",
+            scrub: 1,
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
+    // Parallax blobs
+    gsap.to(".blob-1", {
+      y: -100,
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 2
+      }
+    });
+
+    gsap.to(".blob-2", {
+      y: -150,
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 2
+      }
+    });
+
+    // Scroll Progress Bar
+    gsap.to(".scroll-progress", {
+      scaleX: 1,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "body",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.3
+      }
+    });
+
+    // Magnetic Buttons
+    const buttons = document.querySelectorAll(".btn-primary, .btn-secondary");
+    buttons.forEach((btn) => {
+      btn.addEventListener("mousemove", ((e: MouseEvent) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        
+        gsap.to(btn, {
+          x: x * 0.3,
+          y: y * 0.3,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      }) as EventListener);
+      
+      btn.addEventListener("mouseleave", () => {
+        gsap.to(btn, {
+          x: 0,
+          y: 0,
+          duration: 0.3,
+          ease: "elastic.out(1, 0.3)"
+        });
+      });
+    });
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
 
-    // Scroll Reveal Observer
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("revealed");
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll(".section").forEach(section => {
-      observer.observe(section);
-    });
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      observer.disconnect();
     };
-  }, []);
+  }, [isLoading]);
 
   const scrollToTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const result = await emailjs.send(
+        "service_6azv3hd",
+        "template_gyxedv5",
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+          to_name: "Mark James",
+        },
+        "TxvFC4Dowhp6MfZf7"
+      );
+      console.log("EmailJS Success:", result.text);
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error: any) {
+      console.error("EmailJS Error:", error.text || error.message || error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus("idle"), 5000);
+    }
+  };
+
   return (
     <>
       {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
       <div className={`main-content-wrapper ${isLoading ? 'is-loading' : 'is-loaded'}`}>
+      <div className="scroll-progress"></div>
       <div className="ambient-blob blob-1"></div>
       <div className="ambient-blob blob-2"></div>
 
@@ -145,7 +259,7 @@ export default function Home() {
       <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
         <div className="container nav-container">
           <a href="#" className="logo">
-            Portfolio<span>.</span>
+            MJA<span>.</span>
           </a>
           <div className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
             <a href="#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
@@ -501,7 +615,60 @@ export default function Home() {
             <div className="line"></div>
           </div>
           <div className="contact-container">
-
+            <form className="contact-form" id="contactForm" onSubmit={handleContactSubmit}>
+              <div className="form-group">
+                <label htmlFor="name">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  required 
+                  placeholder="Enter your name" 
+                  value={formData.name}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  required 
+                  placeholder="Enter your email" 
+                  value={formData.email}
+                  onChange={handleInputChange}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Message</label>
+                <textarea
+                  id="message"
+                  rows={5}
+                  required
+                  placeholder="Your message here..."
+                  value={formData.message}
+                  onChange={handleInputChange}
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                className={`btn btn-primary btn-block ${isSubmitting ? 'loading' : ''}`}
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Message Sent!' : 'Send Message'} 
+                {!isSubmitting && submitStatus !== 'success' && <Send size={20} />}
+              </button>
+              
+              {submitStatus === "success" && (
+                <div className="form-feedback success">
+                  Your message has been sent successfully! I&apos;ll get back to you soon.
+                </div>
+              )}
+              {submitStatus === "error" && (
+                <div className="form-feedback error">
+                  Something went wrong. Please try again or email me directly.
+                </div>
+              )}
+            </form>
 
             <div className="contact-info">
               <div className="contact-item">
